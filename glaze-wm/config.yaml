@@ -63,12 +63,20 @@ bar:
   components_center:
     - type: "window title"
   components_right:
-    - type: "music"
-      label_not_playing: ""
-      label_paused: "{artist_name} - {song_title} "
-      label_playing: "{artist_name} - {song_title} "
-      max_title_length: 15
-      max_artist_length: 15
+    - type: "weather"
+      latitude: 10.356876
+      longitude: 123.952044
+      label: "{temperature_celsius}°C"
+      label_sun: "☀️ {temperature_celsius}°C"
+      label_moon: "🌙 {temperature_celsius}°C"
+      label_cloud_moon: "🌙☁️ {temperature_celsius}°C"
+      label_cloud_sun: "⛅ {temperature_celsius}°C"
+      label_cloud_moon_rain: "🌙🌧️ {temperature_celsius}°C"
+      label_cloud_sun_rain: "🌦️ {temperature_celsius}°C"
+      label_cloud_rain: "🌧️ {temperature_celsius}°C"
+      label_snow_flake: "❄️ {temperature_celsius}°C"
+      label_thunderstorm: "⚡ {temperature_celsius}°C"
+      label_cloud: "☁️ {temperature_celsius}°C"
     - type: "volume"
       label_low: "󰕿 {volume_level}%"
       label_medium: "󰖀 {volume_level}%"
@@ -85,22 +93,22 @@ bar:
 
 workspaces:
   - name: "1"
-    display_name: "main"
+    display_name: "🌐" # web/main
     keep_alive: true
   - name: "2"
-    display_name: "code"
+    display_name: "🛠️" # code 
     keep_alive: true
   - name: "3"
-    display_name: "music"
+    display_name: "💻" # terminal 
     keep_alive: true
   - name: "4"
-    display_name: "chat"
+    display_name: "🎵" # music/spotify
     keep_alive: true
   - name: "5"
-    display_name: "other"
+    display_name: "✉️" # chat/discord
     keep_alive: true
   - name: "6"
-    display_name: "7"
+    display_name: "📂" # other
     keep_alive: true
   - name: "7"
     display_name: "7"
@@ -134,17 +142,19 @@ window_rules:
 
   # custom window rules
   - command: "move to workspace 1"
-    match_process_name: "(Arc|Brave|Google Chrome)"
+    match_process_name: "(Arc|brave|chrome)"
   - command: "move to workspace 2"
-    match_process_name: "(WindowsTerminal|Code)"
+    match_process_name: "Code"
   - command: "move to workspace 3"
-    match_process_name: "(Spotify)"
+    match_process_name: "WindowsTerminal"
   - command: "move to workspace 4"
-    match_process_name: "(Discord)"
+    match_process_name: "(Spotify)"
   - command: "move to workspace 5"
+    match_process_name: "(Discord)"
+  - command: "move to workspace 6"
     match_process_name: "explorer"
   - command: "set floating"
-    match_process_name: "(steam|steamwebhelper|Riot Client|League of Legends)"
+    match_process_name: "(steam|steamwebhelper|riotclient)"
 
 binding_modes:
   - name: "resize"
@@ -179,13 +189,13 @@ keybindings:
 
   # Move focused window in a given direction.
   - command: "move left"
-    bindings: ["Alt+Shift+H", "Alt+Shift+Left"]
+    bindings: ["Alt+Shift+H"]
   - command: "move right"
-    bindings: ["Alt+Shift+L", "Alt+Shift+Right"]
+    bindings: ["Alt+Shift+L"]
   - command: "move up"
-    bindings: ["Alt+Shift+K", "Alt+Shift+Up"]
+    bindings: ["Alt+Shift+K"]
   - command: "move down"
-    bindings: ["Alt+Shift+J", "Alt+Shift+Down"]
+    bindings: ["Alt+Shift+J"]
 
   # Resize focused window by a percentage or pixel amount.
   - command: "resize width -2%"
